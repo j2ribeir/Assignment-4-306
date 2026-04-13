@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ElliQ: Life Story Companion - A4 Case Study</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #161619;
+    color: #c0c0c6;
+    line-height: 1.7;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 48px 100px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 56px;
+  }
+  .header h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+  }
+  .header .subtitle {
+    font-size: 15px;
+    color: #7a7a82;
+    margin-top: 6px;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 14px;
+    color: #adadb4;
+    line-height: 1.6;
+  }
+
+  /* Section heads */
+  .section-head {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .section-head::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #8c5cf5;
+    border-radius: 2px;
+    margin-top: 10px;
+    margin-bottom: 22px;
+  }
+
+  .sub-head {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  p, .body-text {
+    font-size: 15px;
+    color: #b8b8c0;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+  p:last-child { margin-bottom: 0; }
+
+  .section { margin-bottom: 52px; }
+
+  /* Cards */
+  .card {
+    background: #1e1e24;
+    border: 1px solid #2c2c34;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+  }
+
+  .card .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #8c5cf5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .card .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  /* Goal card */
+  .goal-card {
+    background: #1e1e24;
+    border: 1px solid #2c2c34;
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-top: 16px;
+  }
+  .goal-card .label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #8c5cf5;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .goal-card p {
+    font-size: 17px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.65;
+  }
+
+  /* Stakeholder cards */
+  .stakeholder-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 8px;
+  }
+  .s-card {
+    background: #1e1e24;
+    border: 1px solid #2c2c34;
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+  .s-card .s-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #8c5cf5;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .s-card .s-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+  .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .tag {
+    background: #2d1f47;
+    color: #8c5cf5;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+  .s-card .desc {
+    font-size: 14px;
+    color: #a0a0a8;
+    line-height: 1.65;
+  }
+
+  /* Before/After */
+  .ba-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .ba-cell {
+    background: #1e1e24;
+    border: 1px solid #2c2c34;
+    border-radius: 12px;
+    min-height: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+  .ba-cell .ba-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #8c5cf5;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .ba-cell .ba-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .ba-cell .ba-placeholder {
+    font-size: 12px;
+    color: #5a5a64;
+    font-style: italic;
+  }
+  .ba-note {
+    font-size: 13px;
+    color: #5a5a64;
+    margin-top: 12px;
+    font-style: italic;
+  }
+
+  /* Requirements */
+  .req-card {
+    background: #1e1e24;
+    border: 1px solid #2c2c34;
+    border-radius: 12px;
+    padding: 20px 28px;
+    margin-bottom: 12px;
+  }
+  .req-card .req-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #8c5cf5;
+    margin-bottom: 8px;
+  }
+  .req-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .req-card li {
+    font-size: 14px;
+    color: #a0a0a8;
+    line-height: 1.65;
+    padding: 3px 0;
+  }
+  .req-card li::before {
+    content: '\2022';
+    color: #5a5a64;
+    margin-right: 10px;
+  }
+
+  /* Quote blocks */
+  .quote {
+    background: #1e1e24;
+    border: 1px solid #2c2c34;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 12px;
+  }
+  .quote .q-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: #e8e8ec;
+    line-height: 1.65;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .quote .q-source {
+    font-size: 13px;
+    color: #6a6a74;
+  }
+
+  /* Takeaway cards */
+  .takeaway-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .takeaway {
+    background: #1e1e24;
+    border: 1px solid #2c2c34;
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+  .takeaway .tk-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .takeaway .tk-desc {
+    font-size: 14px;
+    color: #a0a0a8;
+    line-height: 1.65;
+  }
+
+  /* References */
+  .ref-list {
+    font-size: 13px;
+    color: #9090a0;
+    line-height: 1.8;
+  }
+  .ref-list p {
+    font-size: 13px;
+    color: #9090a0;
+    margin-bottom: 10px;
+    padding-left: 24px;
+    text-indent: -24px;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid #2c2c34;
+    margin: 40px 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h1>ElliQ: Life Story Companion</h1>
+      <div class="subtitle">A4 Individual Case Study</div>
+    </div>
+    <div class="header-right">
+      Jayden Ribeiro (21061748) | GBDA 306<br>
+      Professor Whitson | April 2026
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="section-head">Overview</div>
+    <p>ElliQ, made by Intuition Robotics, is a companion robot designed to support seniors living at home. It can play music, send messages to family, and give medication reminders. But at its core, ElliQ was built as a task assistant, and that framing misses something important about what aging with dementia actually looks like.</p>
+    <p>For seniors with dementia, the biggest losses are not logistical. They are personal. A person may lose access to their own memories, their sense of who they are, and their cultural identity. A robot that reminds you to take a pill does nothing for that. Worse, if the design feels cold or clinical, it can increase anxiety and feelings of disorientation.</p>
+    <p>At the same time, dementia care researchers need reliable data, informed consent from a vulnerable group, and tools they can trust. Any design that adds noise, confusion, or ethical uncertainty to that process creates real problems for their work.</p>
+
+    <div class="goal-card">
+      <div class="label">Case Study Goal</div>
+      <p>Redesign ElliQ to serve both seniors with dementia and dementia care researchers through Value Sensitive Design, resolving the tension between personal identity and research transparency.</p>
+    </div>
+  </div>
+
+  <!-- STAKEHOLDER ANALYSIS -->
+  <div class="section">
+    <div class="section-head">Stakeholder Analysis</div>
+    <div class="stakeholder-row">
+      <div class="s-card">
+        <div class="s-label">S1: Direct Stakeholder</div>
+        <div class="s-title">Seniors with Dementia</div>
+        <div class="tags">
+          <span class="tag">Well-being</span>
+          <span class="tag">Identity</span>
+        </div>
+        <div class="desc">Emotional comfort, cognitive engagement, and daily support. Being seen as a whole person with a history, relationships, and culture, not just a patient.</div>
+      </div>
+      <div class="s-card">
+        <div class="s-label">S2: Indirect Stakeholder</div>
+        <div class="s-title">Dementia Care Researchers</div>
+        <div class="tags">
+          <span class="tag">Trust</span>
+          <span class="tag">Well-being</span>
+        </div>
+        <div class="desc">Confidence that data is accurate, ethically sourced, and transparent. Peace of mind that the system protects their professional integrity and reduces the ethical burden of working with vulnerable participants.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUE TENSIONS -->
+  <div class="section">
+    <div class="section-head">Value Tensions</div>
+    <p>The main tension is between S1 Identity and S2 Trust. The features that make ElliQ feel personal and comforting, like storing life stories, interests, and emotional states, are also the ones that generate the most sensitive research data. The more personal the design gets, the more careful you have to be about what data is being collected and shared.</p>
+    <p>When ElliQ prompts someone to share a memory, it is actively shaping what the researcher will see in the data. The warmth of the interaction and the research record are connected (Axelsson & Skantze, 2024). You cannot really separate them.</p>
+    <p>The redesign handles this by putting consent management entirely in the caregiver portal and hiding the research layer from the user. The user never encounters a clinical consent pop-up. Researchers get full transparency through a separate login. The tension is managed but not fully resolved. A future version could explore conversational consent where ElliQ naturally asks the user if they are comfortable sharing something.</p>
+  </div>
+
+  <!-- DESIGN PROCESS -->
+  <div class="section">
+    <div class="section-head">Design Process (A1 to A4)</div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <div class="label">Assignment 1</div>
+      <div class="card-title">Understanding ElliQ</div>
+      <p>Identified direct and indirect stakeholders. Key insight: ElliQ had been designed primarily around seniors but gave very little thought to the values of researchers or the ethical implications of putting a data-collecting device in the home of someone who may not fully understand what it does.</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 16px;">
+      <div class="label">Assignment 2</div>
+      <div class="card-title">Value Sensitive Analysis</div>
+      <p>Mapped values for each stakeholder and identified where they conflict. S1 values: Well-being (emotional comfort, reduced anxiety) and Identity (recognized as a full person with history and culture). S2 values: Trust (confidence in consent and data accuracy) and Well-being (peace of mind, defensible methods, reliable system). Central tension identified: S1 Identity vs. S2 Trust.</p>
+    </div>
+
+    <div class="card">
+      <div class="label">Assignment 3</div>
+      <div class="card-title">Redesign Concept: Life Story Companion</div>
+      <p>Transformed ElliQ from a generic task assistant into a Life Story Companion. Instead of organizing ElliQ around what it can do, the redesign organized it around who the user is: their stories, culture, and relationships. This shows up across three screens: Your Story Today (home), Memory Talk (conversation), and the Care Portal (researcher/caregiver only).</p>
+    </div>
+  </div>
+
+  <!-- BEFORE / AFTER -->
+  <div class="section">
+    <div class="section-head">Before & After</div>
+    <p style="margin-bottom: 20px;">The redesign transforms ElliQ from a generic task menu into a personalized Life Story Companion. The Before screen shows the original interface with a grid of function buttons. The After screens show the three core redesigned experiences: a home screen focused on personal identity, a memory talk interface for reflection, and a researcher-only care portal for ethical oversight.</p>
+    <div class="ba-row">
+      <div class="ba-cell" style="min-height: auto; background: #000; padding: 0;">
+        <div class="ba-label" style="padding: 12px 12px 0;">Before</div>
+        <div class="ba-title" style="padding: 0 12px 12px; margin: 0;">Original ElliQ</div>
+        <img src="Screenshots/BEFORE_ORIGINAL_ELLIQ.png" style="width: 100%; display: block; border-radius: 12px;">
+      </div>
+      <div class="ba-cell" style="min-height: auto; background: #000; padding: 0;">
+        <div class="ba-label" style="padding: 12px 12px 0;">After</div>
+        <div class="ba-title" style="padding: 0 12px 12px; margin: 0;">Your Story Today</div>
+        <img src="Screenshots/AFTER_SCREEN1_HOME.png" style="width: 100%; display: block; border-radius: 12px;">
+      </div>
+      <div class="ba-cell" style="min-height: auto; background: #000; padding: 0;">
+        <div class="ba-label" style="padding: 12px 12px 0;">After</div>
+        <div class="ba-title" style="padding: 0 12px 12px; margin: 0;">Memory Talk</div>
+        <img src="Screenshots/AFTER_SCREEN2_MEMORY.png" style="width: 100%; display: block; border-radius: 12px;">
+      </div>
+      <div class="ba-cell" style="min-height: auto; background: #000; padding: 0;">
+        <div class="ba-label" style="padding: 12px 12px 0;">After</div>
+        <div class="ba-title" style="padding: 0 12px 12px; margin: 0;">Care Portal</div>
+        <img src="Screenshots/AFTER_SCREEN3_PORTAL.png" style="width: 100%; display: block; border-radius: 12px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- DESIGN REQUIREMENTS -->
+  <div class="section">
+    <div class="section-head">Design Requirements Integrated</div>
+
+    <div class="req-card">
+      <div class="req-value">S1 Identity</div>
+      <ul>
+        <li>Personalized greeting by name with warmth</li>
+        <li>Family-uploaded photos, audio, and messages during routine check-ups</li>
+        <li>Meaningful milestone reminders (e.g. "Sarah is visiting today at 3 PM")</li>
+        <li>Cultural colour themes and heritage cards reflecting user's tradition and ethnicity</li>
+        <li>Reflective conversation with ElliQ, like talking to a friend</li>
+        <li>Stored interests, strengths, and personal stories for later conversations</li>
+        <li>Games and activities based on personal stories and life history (memory cards)</li>
+      </ul>
+    </div>
+
+    <div class="req-card">
+      <div class="req-value">S1 Well-being</div>
+      <ul>
+        <li>Daily wellness check-in in a comforting, non-clinical tone</li>
+        <li>Emotional tone detection with adaptive warm responses</li>
+        <li>Optional connection prompts (Call Sarah, share a memory)</li>
+      </ul>
+    </div>
+
+    <div class="req-card">
+      <div class="req-value">S2 Trust</div>
+      <ul>
+        <li>Informed consent mechanisms understandable to users with cognitive decline (caregiver-mediated, plain language)</li>
+        <li>Audit trails that allow researchers to verify data accuracy</li>
+      </ul>
+    </div>
+
+    <div class="req-card">
+      <div class="req-value">S2 Well-being</div>
+      <ul>
+        <li>Safeguards that pause non-essential data collection if user shows distress</li>
+        <li>Real-time alerts to care teams when critical wellbeing thresholds are reached</li>
+        <li>Repeated user query detection flagged as potential cognitive markers for researchers</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- A4 REFINEMENTS -->
+  <div class="section">
+    <div class="section-head">A4 Final Refinements</div>
+    <p>Based on TA feedback and peer review, two significant changes were made for the final version.</p>
+
+    <div class="card" style="margin-top: 16px;">
+      <div class="label">Home Screen Refinements</div>
+      <p>Reduced the number of elements visible at once. The original design showed the photo, mood check-in, milestone reminder, and cultural theme simultaneously. The refined version introduces these progressively: on load, only the photo and a single greeting are visible. The mood check-in appears after a short pause. Cultural theme cards appear on a secondary scroll layer. Font size and line spacing were increased. Layout changed from grid to single vertical column.</p>
+    </div>
+
+    <div class="card">
+      <div class="label">S2 Well-being Correction</div>
+      <p>Reframed S2 Well-being throughout the design and in the Care Portal. Added a new Research Integrity Status panel showing researchers whether all active sessions have valid consent, whether any data was paused due to distress, and whether the audit log is current. This gives researchers at-a-glance confirmation that their data collection is ethically sound.</p>
+    </div>
+  </div>
+
+  <!-- PEER EVALUATION FEEDBACK -->
+  <div class="section">
+    <div class="section-head">Peer Evaluation Feedback</div>
+
+    <div class="quote">
+      <div class="q-text">"The Care Portal feels like something I would actually trust. Knowing there is an audit log and that data stops during distress events makes a big difference. That is the kind of safeguard you want when working with this population."</div>
+      <div class="q-source">S2 Proxy (nursing student with dementia care coursework)</div>
+    </div>
+
+    <div class="quote">
+      <div class="q-text">"My family member would love the photos. She always responds when you show her pictures of people she knows. But I wonder if too much text at once would confuse her."</div>
+      <div class="q-source">S1 Proxy (family member of senior with early-stage dementia)</div>
+    </div>
+
+    <div class="quote">
+      <div class="q-text">"The Life Story Companion concept is doing a lot of things at once. The home screen might benefit from a single focal point."</div>
+      <div class="q-source">Peer Review Feedback</div>
+    </div>
+
+    <p style="margin-top: 16px;">The S2 proxy's feedback about the distress auto-pause led directly to the Research Integrity Status panel being added as a top-level summary. The S1 proxy confirmed that progressive disclosure was necessary, not just aesthetically preferable. The peer feedback tightened the home screen design.</p>
+  </div>
+
+  <!-- FURTHER PRODUCT DESIGN -->
+  <div class="section">
+    <div class="section-head">Further Product Design</div>
+    <p>The biggest area to improve in the next iteration would be expanding the researcher dashboard to include trend tracking and customizable alert thresholds. The Well-being requirements for S2, like longitudinal data tracking, study-customizable assessments, and caregiver feedback integration, are in the design requirements from A2 but not yet fully built out in the prototype.</p>
+    <p>A future version could also explore a more conversational consent approach where ElliQ naturally asks the user if they are comfortable sharing something, rather than relying only on the caregiver portal. Caregiver-mediated consent brings up its own question about whose interests are actually being represented.</p>
+  </div>
+
+  <!-- PERSONAL REFLECTION -->
+  <div class="section">
+    <div class="section-head">Personal Reflection</div>
+    <p>My clearest moment of understanding came when I reread the TA feedback about S2 Well-being. My original framing was that S2 Well-being meant researchers cared about whether the senior was doing well emotionally. That is not wrong, but it is incomplete and, in a VSD sense, it misses the point.</p>
+    <p>Researchers have their own well-being at stake. If a tool they rely on produces ethically compromised data, their entire study is at risk. If they cannot verify consent status, they cannot publish. If the system continues recording during a distress event and they did not know, they are professionally and ethically exposed. The design is not just a product for users. It is also a professional tool for researchers, and they have real stakes in how it functions.</p>
+    <p>That realization changed how I thought about VSD more broadly. Every stakeholder brings their own fears, pressures, and vulnerabilities to a design, and a VSD process that only maps abstract values without understanding those pressures will miss things. Van de Poel's (2013) three-level hierarchy was useful here: the value leads to a norm, which leads to a requirement, and each level has to be specified carefully before it becomes design.</p>
+    <p>The most useful thing I took away from this process is that values are not abstract, they are specific. Trust for a researcher is not the same as trust for a user. Well-being for a senior is not the same as well-being for a caregiver. Before you can design for a value, you have to understand what that value looks like in practice for a specific person in a specific situation. That specificity is what turns a VSD checklist into an actual design tool.</p>
+    <p>If I started the VSD process again, I would spend more time on indirect stakeholders earlier. I also would have done stakeholder feedback at the A2 stage instead of waiting until the end. Even a short conversation with a proxy earlier would have surfaced the S2 Well-being misframing before it got embedded in the design.</p>
+
+    <p>During the peer review session, I saw designs that handled the stakeholder tension very differently. One peer kept the research layer visible to users with a simple "this session is being recorded" indicator. Another removed the researcher stakeholder almost entirely. Seeing these alternatives helped me feel more confident in my own choice while also sharpening my understanding of its tradeoffs.</p>
+
+    <p>Seeing peer's work and hearing their feedback was really helpful because I felt like many of the things that they were saying I was already feeling but could not fully articulate. One peer gave feedback that the concept was doing a lot of things at once, and that pushed me to tighten the home screen. Not because the concept was wrong, but because a home screen that tries to show identity, culture, family, and mood simultaneously is trying too hard.</p>
+
+    <p>The main concept that I learned from this course was analyzing a product through the lens of specific human values. When I first learned about VSD, I thought the goal was to identify which values matter and then check a design against them. What this project taught me is that the interesting work is in making values concrete. That is something I plan to carry into any design work I do in the future.</p>
+  </div>
+
+  <!-- TAKEAWAYS -->
+  <div class="section">
+    <div class="section-head">Takeaways</div>
+    <div class="takeaway-row">
+      <div class="takeaway">
+        <div class="tk-title">Values are specific, not abstract</div>
+        <div class="tk-desc">Trust for a researcher is not the same as trust for a user. Before you can design for a value, you have to understand what it looks like in practice for a specific person in a specific situation.</div>
+      </div>
+      <div class="takeaway">
+        <div class="tk-title">Value tensions produce real design decisions</div>
+        <div class="tk-desc">The S1 Identity vs. S2 Trust tension led directly to the decision to hide the research layer. That is a real architectural choice, not a checklist item.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REFERENCES -->
+  <div class="section">
+    <div class="section-head">References</div>
+    <div class="ref-list">
+      <p>Axelsson, A., & Skantze, G. (2024). Recommendations for designing conversational companion robots with older adults through foundation models. <em>Frontiers in Robotics and AI.</em> https://pmc.ncbi.nlm.nih.gov/articles/PMC11163135/</p>
+<p>Van de Poel, I. (2013). Translating values into design requirements. In D. Michelfelder, N. McCarthy, & D. Goldberg (Eds.), <em>Philosophy and engineering: Reflections on practice, principles and process</em> (pp. 253-266). Springer. https://doi.org/10.1007/978-94-007-7762-0_20</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
